@@ -12,6 +12,26 @@ Whilst it is imperative to have a firm grasp of these skills to be a proficient 
 The workshops will provide the opportunity to develop these skills with the support of academics and teaching assistants through a combination of taught sessions, assignments and feedback. Each week three hours are timetabled for the workshops, which will typically be split into two blocks. Each block will focus on one particular skill or topic related to either computing and analysis or scientific communication. 
 
 
-The structure of the course has been designed so that you have the opportunity to develop skills in the workshop before applying them in other areas of the programme (e.g. developing analysis or writing skills that may then be applied when completing lab assignments). During some weeks free blocks are timetabled, these have purposefully been included so that you may decide which skills or topics you wish to receive additional support with. For example, free sessions may be used to recap previously covered materials or to complete analysis and writing assignments related to the labs.
+The structure of the course has been designed so that you have the opportunity to develop skills in the workshop before applying them in other areas of the programme (e.g. developing analysis or writing skills that may then be applied when completing lab assignments). During some weeks free blocks are timetabled, these have purposefully been included so that you may decide which skills or topics you wish to receive additional support with. For example, free sessions may be used to recap previously covered materials or to complete analysis and writing assignments related to the labs. 
+
+The schedule for the computing workshops is as follows:
+
+|Week | Topic|
+|---|---|
+|1| Performing Calculations with Computers I & Measurement, Errors and Uncertainty.|
+|2| Data Types and Management & Functions and Modules |
+|3| Conditional Statements and Loops & Visualising Data and Manual Regression.|
+|4| Linear Regression using Scipy|
+|5| Solving Coding Problems & Arteficial Intelligence|
+|6| Computing Skills Assessment I|
+|7| Reading Week|
+|8-12| Writing Block
+|**Semester 2**|-|
+|1-4| Take your Barometer for a Walk Project & MySkills|
+|5| Pandas DataFrames|
+|6| Python Skills Assessment II|
+|7| Introduction to LabView & Interfacing with LabView and a MyDAQ|
+|8| AC Circuits |
+|9-11| Employability|
 
 I hope you enjoy the workshops!
