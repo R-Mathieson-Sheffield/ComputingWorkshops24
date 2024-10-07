@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Wk2_Data_Types_Management';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -367,7 +369,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ints-and-floats">Ints and floats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-tuples">Lists and Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">Numpy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">Numpy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numpy-things">Common Numpy Things</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activities">Activities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Strings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations">Calculations</a></li>
@@ -1024,12 +1029,99 @@ Shape (3, 3)
 </div>
 </div>
 </div>
+<div class="section" id="common-numpy-things">
+<h3>Common Numpy Things<a class="headerlink" href="#common-numpy-things" title="Permalink to this heading">#</a></h3>
+<p>When working with data in the labs, it is likely that you will want to perform calculations on linear sets of data. For example, perhaps you would like to mutliply all of your measured data by a constant or calculate the average from a series of repeat measurements. This can easily be done using numpy arrays - when using them you can simply write an equation in terms of the array and python will know you want to create a new array where every value has been modified.</p>
+<p>For example, let’s take a one dimensional numpy array and mutliply every value by 2 before adding 3:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+
+<span class="n">newData</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newData</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 5  7  9 11 13 15 17 19 21 23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could then use newData in subsequent calculations. We can aslo make use of useful numpy functions such as sum or average. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The mean of the data is: &quot;</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of the data is: &quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean of the data is:  5.5
+The sum of the data is:  55
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just think, being able to do maths in this way would make performing calculations much more efficicent. For example I could very quickly calculate something like the standard deviation of a series of measurements by using a numpy array and</p>
+<div class="math notranslate nohighlight">
+\[ 
+\sigma_{N-1} = \sqrt{\frac{\sum{\left(x_i-\bar{x}\right)^2}}{N-1}}:
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">])</span>
+
+<span class="c1"># 1. Calculate the mean</span>
+<span class="n">mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+
+<span class="c1"># 2. Calculate the square of the deviation from the mean for each value</span>
+<span class="n">x_minus_xbar_squared</span> <span class="o">=</span> <span class="p">(</span><span class="n">data1</span> <span class="o">-</span> <span class="n">mean1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># 3. Calculate the numerator and denominator of the standard deviation equation</span>
+<span class="n">numerator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_minus_xbar_squared</span><span class="p">)</span>
+<span class="n">denominator</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">#len() simply tells us how many values are in the array.</span>
+
+<span class="c1">#Calculate the standard deviation</span>
+<span class="n">standardDeviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numerator</span><span class="o">/</span><span class="n">denominator</span><span class="p">)</span>
+
+<span class="c1">#print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The standard deviation for the data above is given as:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">standardDeviation</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The standard deviation for the data above is given as: 0.12
+</pre></div>
+</div>
+</div>
+</div>
+<p>The method above is valid, but as this is the sort of calculation that is fairly common there is a pre-defined numpy function that will do the same for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardDeviation2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">ddof</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy calculates the standard deviation to be:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">standardDeviation2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy calculates the standard deviation to be: 0.12
+</pre></div>
+</div>
+</div>
+</div>
 <p>Before we move onto the next topic, I would like to make you aware of a few tools in numpy that you may find useful:</p>
-<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html">np.zeros()</a> - used to create an array filled with zeros,</p>
-<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html">np.ones()</a> - used to create an array filled with ones,</p>
-<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html">np.linspace()</a> - used to create a 1D array with linearly spaced values between a start and stop, where we define how many values we would like in our array,</p>
-<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">np.arange()</a>.- used to create a 1D array with values between a start and stop, where we define the step increment between the two values.</p>
-<p>Examples of the following numpy tools are provided below:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html">np.zeros()</a> - used to create an array filled with zeros,</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html">np.ones()</a> - used to create an array filled with ones,</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html">np.linspace()</a> - used to create a 1D array with linearly spaced values between a start and stop, where we define how many values we would like in our array,</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">np.arange()</a>- used to create a 1D array with values between a start and stop, where we define the step increment between the two values.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/2.0/reference/generated/numpy.round.html">np.round()</a> - used to round a value to a particular number of decimals (as in the examples above).</p></li>
+</ul>
+<p>Examples of the these numpy tools are provided below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zerosArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
@@ -1084,6 +1176,7 @@ Shape (3, 3)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.  0.5 1.  1.5 2.  2.5 3.  3.5 4.  4.5 5.  5.5 6.  6.5 7.  7.5 8.  8.5
  9.  9.5]
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1224,7 +1317,10 @@ Shape (3, 3)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ints-and-floats">Ints and floats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-tuples">Lists and Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">Numpy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">Numpy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numpy-things">Common Numpy Things</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activities">Activities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Strings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations">Calculations</a></li>

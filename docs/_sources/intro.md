@@ -25,7 +25,8 @@ The schedule for the computing workshops is as follows:
 |5| Solving Coding Problems & Arteficial Intelligence|
 |6| Computing Skills Assessment I|
 |7| Reading Week|
-|8-12| Writing Block
+|8-11| Writing Block
+|12| Non-Linear and Weighted Regression Analysis
 |**Semester 2**|-|
 |1-4| Take your Barometer for a Walk Project & MySkills|
 |5| Pandas DataFrames|
