@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computing Skills Assessment &#8212; PHYS11006 - Computing Skills Workshop</title>
+    <title>Propagation of Uncertainties &#8212; PHYS11006 - Computing Skills Workshop</title>
   
   
   
@@ -60,11 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Wk6_Computing_Skills_Assessment';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Appendix_ErrorProp';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Weighted and Non-Linear Regression Analysis" href="Wk12_Weighted_and_NonLinear_Regression.html" />
-    <link rel="prev" title="Artificial Intelligence (AI)" href="Wk5_Artificial_Intelligence.html" />
+    <link rel="prev" title="Useful Functions" href="Useful_Functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Wk5_Artificial_Intelligence.html">Artificial Intelligence (AI)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Semester 1, Week 6</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computing Skills Assessment</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Wk6_Computing_Skills_Assessment.html">Computing Skills Assessment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Semester 1, Week 12</span></p>
 <ul class="nav bd-sidenav">
@@ -192,9 +193,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="S2_Wk2_Take_Your_Barometer_For_A_Walk.html">Take Your Barometer For A Walk!</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Useful_Functions.html">Useful Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Appendix_ErrorProp.html">Propagation of Uncertainties</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Propagation of Uncertainties</a></li>
 </ul>
 
     </div>
@@ -266,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FWk6_Computing_Skills_Assessment.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAppendix_ErrorProp.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/Wk6_Computing_Skills_Assessment.ipynb" target="_blank"
+      <li><a href="_sources/Appendix_ErrorProp.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Computing Skills Assessment</h1>
+    <h1>Propagation of Uncertainties</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,9 +389,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revision">Revision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-task">Assessment Task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-perform-error-propagation-calculations">Quickly Perform Error Propagation Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-error-propagation">Example Error Propagation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-propagation-calculations">Standard Error Propagation Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties-in-single-variable-functions">Uncertainties in single-variable functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties-in-multivariable-functions">Uncertainties in multivariable functions</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -402,76 +409,146 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="computing-skills-assessment">
-<h1>Computing Skills Assessment<a class="headerlink" href="#computing-skills-assessment" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="propagation-of-uncertainties">
+<h1>Propagation of Uncertainties<a class="headerlink" href="#propagation-of-uncertainties" title="Permalink to this heading">#</a></h1>
+<p>In most of your labs you have been able to directly extract your experimentally determined values from the gradient or intercept of the line of best fit that you have superimposed onto your data. This has meant that in most instances, you can deal with your experimental errors by calculating standard errors and then performing a suitble regression analysis.</p>
+<p>You will have also noticed that sometimes we calculate the value of one parameter from another, where the latter parameter has an associated uncertainty. Often we also need to perform calculations including multiple variables that have their own associated errors. If either of these is the case, we need to be able to perform suitable error propagations. This appendix to the writing materials has been designed to demonstrate how to perform simple error propagations and provide you with the error equations for various common calculations.</p>
+<p>For a more in depth look at how to perform error propagations, you should review chapter 4 of <a class="reference external" href="https://find.shef.ac.uk/primo-explore/fulldisplay?docid=44SFD_ALMA_DS21177067650001441&amp;context=L&amp;vid=44SFD_VU2&amp;lang=en_US&amp;search_scope=SCOP_EVERYTHING&amp;adaptor=Local%20Search%20Engine&amp;tab=everything&amp;query=any,contains,hughes%20and%20hase&amp;offset=0">“Measurements and their Uncertainties: A Practical Guide to Modern Error Analysis”</a> by Hughes and Hase.</p>
+<p>When performing analysis in the lab it is key that you are able to do these calculations. When writing your report it may also be appropriate to include the equations used for your error propagations in an appendix at the end of the report.</p>
 <hr class="docutils" />
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>This week you will be putting into practise the computing skills we have been developing over the past five weeks.</p>
-<p>You are encouraged to review the materials and exercises used throughout the semester and ask for support from the academic staff and GTA’s at the start of the session. Please also use this time to review the <a class="reference external" href="https://docs.google.com/document/d/1gN--6VbPV-hQovSJq1qVGAGZwnx7SqPcIbkMFjXt9VM/edit?usp=sharing">assessment rubric</a> and ask any questions about today’s task.</p>
-<p>Next, you will begin to work through the assessment. You are encouraged to try and solve the problems to the best of your ability using any resources available independently initially, but you may share ideas with your peers during this time.</p>
-<p>During the final hour of the session, GTA’s and academic staff will be present to support you by offering advice and suggestions of how to complete the task at hand. Please submit a PDF of your Jupyter Notebook (including executed code and final plots made) to the assignment link in Blackboard. <strong>Please review your PDF before submitting</strong> - if your plots are not showing in full, go back into your notebook and click to the left of the cell your plots appear in. This should show the plot in full rather than in a scrollable cell. You will receive feedback on your submission in due course.</p>
-<p>As this is an assessment of your computing skills, <strong>you are only permitted to use AI to debug code and understand error messages</strong>. Where you do make use of AI, please ensure that you complete an <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSd5etOQSrVfQQxwEdBVyPZMEYMn6BEra0OvptRWLnoBdIesKw/viewform">AI disclosure form</a> and include it in your submission.</p>
+<div class="section" id="quickly-perform-error-propagation-calculations">
+<h2>Quickly Perform Error Propagation Calculations<a class="headerlink" href="#quickly-perform-error-propagation-calculations" title="Permalink to this heading">#</a></h2>
+<p>The following is taken from the final page of the the aforementioned textbook. It provides a very brief summary of how we can perform error propagation calculations.</p>
+<p>Consider a linear function:</p>
+<div class="math notranslate nohighlight">
+\[Z = f(A,B),\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> have associated uncertainties of <span class="math notranslate nohighlight">\(\Delta A\)</span> and <span class="math notranslate nohighlight">\(\Delta B\)</span>, respectively. It can be understood that the uncertainty in <span class="math notranslate nohighlight">\(Z\)</span> due to the uncertainty in <span class="math notranslate nohighlight">\(A\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ \Delta _Z^A = \lvert f(A+\Delta A,B) - f(A,B)\rvert,\]</div>
+<p>and the uncertainty in <span class="math notranslate nohighlight">\(Z\)</span> due to the uncertainty in <span class="math notranslate nohighlight">\(B\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ \Delta _Z^B = \lvert f(A,B+\Delta B) - f(A,B)\rvert.\]</div>
+<p>Using Pythagoras’ the total error can be calculated as:</p>
+<div class="math notranslate nohighlight">
+\[ \Delta Z^2 = (\Delta _Z^A)^2 + (\Delta _Z^B)^2, \]</div>
+<div class="math notranslate nohighlight">
+\[ \therefore \Delta Z = \sqrt{(\Delta _Z^A)^2 + (\Delta _Z^B)^2}. \]</div>
+<p>Assuming small uncertainties, the calculus based approximation to this result is:</p>
+<div class="math notranslate nohighlight">
+\[(\Delta Z)^2 = \left(\frac{\partial Z}{\partial A} \right)^2 \Delta A^2 + \left(\frac{\partial Z}{\partial B} \right)^2 \Delta B^2. \]</div>
+<p>The above equation can be used to determine the uncertainty for any function of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. If the function was dependent on additional variables, we would just continue to add on terms to this equation for each variable. For example,  if <span class="math notranslate nohighlight">\(Z = f(A,B,C)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[(\Delta Z)^2 = \left(\frac{\partial Z}{\partial A} \right)^2 \Delta A^2 + \left(\frac{\partial Z}{\partial B} \right)^2 \Delta B^2 + \left(\frac{\partial Z}{\partial C} \right)^2 \Delta C^2. \]</div>
+<p>For a single variable function this can be simplified to:</p>
+<div class="math notranslate nohighlight">
+\[\Delta Z = \lvert \frac{\partial Z}{\partial A} \rvert \Delta A. \]</div>
+<hr class="docutils" />
+<div class="section" id="example-error-propagation">
+<h3>Example Error Propagation<a class="headerlink" href="#example-error-propagation" title="Permalink to this heading">#</a></h3>
+<p>Using the formula above, let us determine the error propagation equation for a very simple function <span class="math notranslate nohighlight">\(Z = A + B\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are variables with associated uncertainties. First we start with our general formula:</p>
+<div class="math notranslate nohighlight">
+\[\Delta Z^2 = \left(\frac{\partial Z}{\partial A} \right)^2 \Delta A^2 + \left(\frac{\partial Z}{\partial B} \right)^2 \Delta B^2. \]</div>
+<p>Next, we replace Z with the actual function:</p>
+<div class="math notranslate nohighlight">
+\[\Delta Z^2 = \left(\frac{\partial (A+B)}{\partial A} \right)^2 \Delta A^2 + \left(\frac{\partial (A+B)}{\partial B} \right)^2 \Delta B^2. \]</div>
+<p>Solving the partial differentials gives:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial(A+B)}{\partial A} = 1, \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial (A+B)}{\partial B} = 1, \]</div>
+<p>thus:</p>
+<div class="math notranslate nohighlight">
+\[\Delta Z^2 =  \Delta A^2 +  \Delta B^2, \]</div>
+<div class="math notranslate nohighlight">
+\[ \therefore \Delta Z = \sqrt{\Delta A^2 +  \Delta B^2}. \]</div>
+<p>In order to propagate the error for a simple addition (or subtraction) we must simply add the associated uncertainties in quadrature…</p>
+</div>
 </div>
 <hr class="docutils" />
-<div class="section" id="revision">
-<h2>Revision<a class="headerlink" href="#revision" title="Permalink to this heading">#</a></h2>
-<p>Please spend some time reviewing the topics that we have covered thus far during the skills workshops and ensure that you are comfortable with each one. If you identify something that seems unfamiliar or that you feel is an area for development, take note of it, review the materials provided, and ask for support if needed.</p>
-<p>A table summarising what we have covered thus far during the semester is provided in the Google Doc <a class="reference external" href="https://docs.google.com/document/d/1RBgVL-hc7ddYorCNd8BW-xqMlrI0rWcsWZ8iTYH9toc/edit">“Computing Skills: Revision &amp; Assessment”</a>. Please use this.</p>
+<div class="section" id="standard-error-propagation-calculations">
+<h2>Standard Error Propagation Calculations<a class="headerlink" href="#standard-error-propagation-calculations" title="Permalink to this heading">#</a></h2>
+<p>For complex functions, you may need to take the calculus approach to determine how to propagate the uncertainties, however, for standard functions it may be easier to use these pre-derived expressions.</p>
+<div class="section" id="uncertainties-in-single-variable-functions">
+<h3>Uncertainties in single-variable functions<a class="headerlink" href="#uncertainties-in-single-variable-functions" title="Permalink to this heading">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Uncertainty</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = \frac{1}{A} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \Delta Z = \frac{\Delta A}{A^2} \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = e^A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = e^A \Delta A\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = e^A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = e^A \Delta A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = \ln(A)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \frac{\Delta A}{A}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = \log(A)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \frac{\Delta A}{log(10)A}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = A^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \lvert n A^{n-1}\rvert \Delta A\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = 10^A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = 10^A ln(10) \Delta A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = \sin(A)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \lvert \cos(A) \rvert \Delta A\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = \cos(A)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \lvert \sin(A) \rvert \Delta A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = \tan(A)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = (1+Z^2) \Delta A\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<hr class="docutils" />
-<div class="section" id="assessment-task">
-<h2>Assessment Task<a class="headerlink" href="#assessment-task" title="Permalink to this heading">#</a></h2>
-<p>In this task you will be given the opportunity to showcase the computing skills that you have developed over the course of the past five weeks. In this task you will:</p>
-<ul class="simple">
-<li><p>Import data from CSV files into Python.</p></li>
-<li><p>Define and use a function.</p></li>
-<li><p>Create several subplots, each of which contains multiple data sets.</p></li>
-<li><p>Slice a set of data into a subset of data.</p></li>
-<li><p>Perform a linear regression on the subset of data.</p></li>
-<li><p>Extrapolate and make predictions based on the results of the linear regression.</p></li>
-</ul>
-<p>Two CSV files are provided for this task. The file named “CountryTemperatures.csv” contains information about the average monthly temperature (and the associated error) for five different countries.</p>
-<p>The file named “CO2Measurements.csv” contains a set of measurements known as the “Keeling Curve”, this being the longest series of continuous measurements of the concentration of CO2 in our atmosphere, which were recorded at the Mauna Loa Observatory, Hawaii. As the level of carbon dioxide in the atmosphere changes with the seasons, the file contains base measurements and seasonally adjusted measurements.</p>
-<p>Dates can be awkward to deal with in Python, so instead of the year, month and day being recorded, decimal dates are used in both datasets. These provide a purely numeric format for dates; the number before the decimal point represents the year, and the number after the decimal point represents the fraction of the year that has elapsed. For example, if a measurement was recorded on September 1st (three quarters through the year), 1989, the decimal date would be 1989.75.</p>
-<p>You task is as follows:</p>
-<ol class="arabic simple">
-<li><p>Import the data from the CSV files into a Python script.</p></li>
-<li><p>Create a figure containing three subplots arranged across two rows. The first row should contain two of the plots, and the second row should have only one plot (see template below).</p></li>
-</ol>
-<p><img alt="Image, alt = &quot;An image showing the layout of the plot that needs to be made. The plot contains three subplots (two on the top row and a third on the bottom row. The third subplot has a width equal to the sum of the widths of the smaller plots above.) The text in the upper-left plot reads: Plot 1: Temperature as a function of time for Ecuador, Rwanda and the United Kingdom. The text in the upper-right plot reads: Plot 2: Concentration of atmospheric CO2 through time. (Includes both seasonally adjusted and non-adjusted data). The text in the lower plot reads: Plot 3: Sliced seasonally adjusted CO2 concentration through time data with a linear fit.&quot;" src="_images/AssessmentBrief.png" /></p>
-<ul class="simple">
-<li><p>On the first subplot, plot the average temperatures of the three countries (Rwanda, Ecuador and the United Kingdom) as a function of time between January 1st 2004 (list index = 1356) and December 1st 2009 (list index = 1428).</p></li>
-<li><p>On the second subplot, plot the concentration of atmospheric CO2 as a function of time (both for the seasonally unadjusted and adjusted data).</p></li>
-<li><p>On the third subplot, plot a subsection of the seasonally adjusted CO2 concentration measurements that span a range between the first measurement of 2004  (list index = 545) to the last measurement of 2012 to (list index = 653). Perform a simple linear regression using this data and superimpose it onto the plot.</p></li>
-<li><p>Write a series of print statements that output the fit results (gradient and intercept with errors and r-value).</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Using the values of the gradient and intercept from the line of best fit as arguments, define a function that predicts the concentration of CO2 for a given year, prints the results, and returns the value as a variable. What is the predicted concentration of CO2 for the year 2050?</p></li>
-</ol>
-<div class="tip admonition">
-<p class="admonition-title">Tips!</p>
-<p>To enhance your plots, you may wish to set what numbers appear on your axes (these are known as ticks: <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html">plt.xticks</a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html">axes.set_xticks</a> and <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html">plt.yticks</a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html">axes.set_yticks</a>), change the minimum or maximum values that your plot spans (use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlim.html">plt.xlim</a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html">plt.set_xlim</a> and <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylim.html">plt.ylim</a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html">plt.set_ylim</a>), change the position/style of your <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">legend</a>, and change the size of your figure using <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html">plt.figure</a>.</p>
-<p>These are just a few of the additional tools you may wish to use to great clear and effective plots for data visualisation, but there are many more that you can use.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
-
-<span class="c1"># Import the data from the csv files.</span>
-
-<span class="c1"># Recall the features of a high quality plot.</span>
-
-<span class="c1"># Create subplots and plot data for plots 1 and 2.</span>
-
-<span class="c1"># Fit the data and make plot 3.</span>
-
-<span class="c1"># Define and call your function</span>
-</pre></div>
-</div>
-</div>
+<div class="section" id="uncertainties-in-multivariable-functions">
+<h3>Uncertainties in multivariable functions<a class="headerlink" href="#uncertainties-in-multivariable-functions" title="Permalink to this heading">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Expression used to Calculate <span class="math notranslate nohighlight">\(\Delta Z\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Z = A+B\)</span> or <span class="math notranslate nohighlight">\(Z = A-B\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \sqrt{\Delta A^2 + \Delta B^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Z = A \times B\)</span> or <span class="math notranslate nohighlight">\(Z = \frac{A}{B}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\Delta Z}{Z} = \sqrt{\left(\frac{\Delta A}{A}\right)^2 + \left(\frac{\Delta B}{B}\right)^2} \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Z = A^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\lvert \frac{\Delta Z}{Z}\rvert = \lvert n \frac{\Delta A}{A}\rvert\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Z = kA \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \lvert k \rvert \Delta A\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = k\frac{A}{B}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\Delta Z}{Z} = \sqrt{\left(\frac{\Delta A}{A}\right)^2 + \left(\frac{\Delta B}{B}\right)^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = k\frac{A^n}{B^m}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\Delta Z}{Z} = \sqrt{\left(n\frac{\Delta A}{A}\right)^2 + \left(m\frac{\Delta B}{B}\right)^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = A + B - C + D \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta Z = \sqrt{\Delta A^2 + \Delta B^2 + \Delta C^2 + \Delta D^2} \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( Z = \frac{A \times B}{C \times D} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\Delta Z}{Z} = \sqrt{\left(\frac{\Delta A}{A}\right)^2 + \left(\frac{\Delta B}{B}\right)^2 + \left(\frac{\Delta C}{C}\right)^2 + \left(\frac{\Delta D}{D}\right)^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( Z = \frac{A^n \times B^m}{C^p \times D^q} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\Delta Z}{Z} = \sqrt{\left(n\frac{\Delta A}{A}\right)^2 + \left(m\frac{\Delta B}{B}\right)^2 \left(p\frac{\Delta C}{C}\right)^2 + \left(q\frac{\Delta D}{D}\right)^2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -508,22 +585,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Wk5_Artificial_Intelligence.html"
+       href="Useful_Functions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Artificial Intelligence (AI)</p>
+        <p class="prev-next-title">Useful Functions</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Wk12_Weighted_and_NonLinear_Regression.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Weighted and Non-Linear Regression Analysis</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -543,9 +611,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revision">Revision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-task">Assessment Task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-perform-error-propagation-calculations">Quickly Perform Error Propagation Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-error-propagation">Example Error Propagation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-propagation-calculations">Standard Error Propagation Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties-in-single-variable-functions">Uncertainties in single-variable functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainties-in-multivariable-functions">Uncertainties in multivariable functions</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
