@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'S2_Wk2_Take_Your_Barometer_For_A_Walk';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Useful Functions" href="Useful_Functions.html" />
+    <link rel="prev" title="Weighted and Non-Linear Regression Analysis" href="Wk12_Weighted_and_NonLinear_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,6 +188,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Semester 1, Week 12</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Wk12_Weighted_and_NonLinear_Regression.html">Weighted and Non-Linear Regression Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Semester 2, Week 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Take Your Barometer For A Walk!</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -385,6 +391,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-session">Analysis Session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-python-analysis">Example Python Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-curve-fit">Using curve_fit</a></li>
 </ul>
             </nav>
         </div>
@@ -408,6 +415,7 @@ document.write(`
 <li><p>Are you planning iterate through a task? <strong>Use a loop.</strong></p></li>
 <li><p>Are there critera that should be taken into consideration when performing your analysis? <strong>Use conditional statements.</strong></p></li>
 <li><p>Do you need to perfrom a calibration or extract information from linear data? <strong>Perform a linear regression.</strong></p></li>
+<li><p>Do you want to fit a non-linear model to your data to extract particular fit parameters or perform a weighted regression? <strong>Use curve_fit.</strong></p></li>
 <li><p>Do you need to present your data is a format suitible for scientific communication purposes? <strong>Make a high quality plot.</strong></p></li>
 <li><p>Unsure how to get your code to do what you want it to or have an error? <strong>Use Python Documentation, StackOverflow and W3Schools</strong>.</p></li>
 </ul>
@@ -533,23 +541,23 @@ The correlation coefficient and R2 value for this fit are: 0.9977 and 0.9954 res
 <ol class="arabic simple" start="5">
 <li><p>We may then use the gradient and its associated uncertainty to determine the spring constant and its associated uncertainty. The error propagation uses the following rule:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-53c6b185-7f7d-4cb0-b473-182657391f67">
-<span class="eqno">()<a class="headerlink" href="#equation-53c6b185-7f7d-4cb0-b473-182657391f67" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-62b652b5-9e09-4d99-808a-62162c20843e">
+<span class="eqno">(44)<a class="headerlink" href="#equation-62b652b5-9e09-4d99-808a-62162c20843e" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 Z = A^n,
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-59b9c142-932b-4cbf-9419-9d12e28175d5">
-<span class="eqno">()<a class="headerlink" href="#equation-59b9c142-932b-4cbf-9419-9d12e28175d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e2c59408-5ac9-4e56-befc-aa1120a722a6">
+<span class="eqno">(45)<a class="headerlink" href="#equation-e2c59408-5ac9-4e56-befc-aa1120a722a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta Z = n \frac{\Delta A}{A} \Delta Z. 
 \end{equation}\]</div>
 <p>Therefore the error on the spring constant, <span class="math notranslate nohighlight">\(k\)</span>, is determined from the gradient of the line of best fit, <span class="math notranslate nohighlight">\(m\)</span>, as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8de862d-9410-42fd-9b8c-09ed363b9a26">
-<span class="eqno">()<a class="headerlink" href="#equation-c8de862d-9410-42fd-9b8c-09ed363b9a26" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b9c1768f-272a-4cb7-8956-708bcf3c9cd5">
+<span class="eqno">(46)<a class="headerlink" href="#equation-b9c1768f-272a-4cb7-8956-708bcf3c9cd5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k = \frac{1}{m} = m^{-1},
 \end{equation}\]</div>
 <p>meaning that <span class="math notranslate nohighlight">\(Z = k\)</span>, <span class="math notranslate nohighlight">\(A=m\)</span> and <span class="math notranslate nohighlight">\(n=-1\)</span>. If we substitute these terms into our error equation above we get:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7218d4a3-cfbf-41e7-b657-312a2902192b">
-<span class="eqno">()<a class="headerlink" href="#equation-7218d4a3-cfbf-41e7-b657-312a2902192b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-18945f42-fb8f-45f4-85c6-d90a7f2ba790">
+<span class="eqno">(47)<a class="headerlink" href="#equation-18945f42-fb8f-45f4-85c6-d90a7f2ba790" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta k = -1 \times \frac{\Delta m}{m} \times k.
 \end{equation}\]</div>
 <p>We take the magnitude of <span class="math notranslate nohighlight">\(\Delta k\)</span> to be equal to the error as it can either be positive or negative (i.e plus or minus).</p>
@@ -592,6 +600,19 @@ k = \frac{1}{m} = m^{-1},
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="using-curve-fit">
+<h2>Using curve_fit<a class="headerlink" href="#using-curve-fit" title="Permalink to this heading">#</a></h2>
+<p>By this stage in the academic year you may feel more comfortable performing a weighted regression or non-linear regression in your analysis. If this is the case you should revisit the workshops we did on this in week 7 of semester 1. Recall that in this session we investigated:</p>
+<ul class="simple">
+<li><p>How to perform a weighted linear fit</p></li>
+<li><p>How to perform a weighted non-linear fit</p></li>
+<li><p>How to calculate and interpret the <span class="math notranslate nohighlight">\(\chi_{red}^2\)</span></p></li>
+<li><p>How to perform a basic consistency check (3-sigma test)</p></li>
+<li><p>How to make high quality plots for non-linear data</p></li>
+</ul>
+<p><strong>You will be assessed on this skill in week 6 so it is worth looking over anyway!</strong></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -625,6 +646,24 @@ k = \frac{1}{m} = m^{-1},
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Wk12_Weighted_and_NonLinear_Regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Weighted and Non-Linear Regression Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Useful_Functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Useful Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -645,6 +684,7 @@ k = \frac{1}{m} = m^{-1},
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-session">Analysis Session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-python-analysis">Example Python Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-curve-fit">Using curve_fit</a></li>
 </ul>
   </nav></div>
 
