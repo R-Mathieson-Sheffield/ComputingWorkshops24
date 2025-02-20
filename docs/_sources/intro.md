@@ -1,38 +1,36 @@
-# Welcome to PHY11006 Computing Skills
-
-All scientists develop a large number of skills as part of their training. Many of these skills are shared between the disciplines of physics, biology and chemistry. For example, every scientist is expected to have developed skills in:
-
--  computer programming,
--  statistical analysis,
--  communication of results.
-
-Whilst it is imperative to have a firm grasp of these skills to be a proficient scientist, they are also highly transferable and will likely be utilised in your future endeavours, regardless of whether you decide to pursue a career in industry or academia. Investing time in developing these skills at the start of your degree is the key to being successful, particularly as these skills are essential at levels 2 and 3 to achieve a strong degree classification. 
+# PHY009: Foundations of Physics
+# PHY010: Elements of Physics 
+## Thermal Physics and Solids Section
 
 
-The workshops will provide the opportunity to develop these skills with the support of academics and teaching assistants through a combination of taught sessions, assignments and feedback. Each week three hours are timetabled for the workshops, which will typically be split into two blocks. Each block will focus on one particular skill or topic related to either computing and analysis or scientific communication. 
+Welcome to the course notes for the Thermal Physics and Solids parts of PHY009 and PHY010 for those students with an A level in Physics.
+
+```{admonition} A note on these notes
+:class: dropdown
+These notes have been written new for the 2024/25 academic year. I have done my best to ensure everything has compiled correctly and that there are no typos but if you do spot any please let me know and I will correct them as soon as possible.
+```
+### About me
+I'm Dr Matt Mears (he/him or they/them), and I'm a Senior University Teacher in Physics. You've already met me in the Mechnanics Course, so here's a little more background that relates specifically to this section of the module.  
+
+During my PhD I investigated how glass materials, specifically thin films around 100 nm, behaved during their phase transition from glass (i.e. solid-like) to amorphous / molten (i.e. liquid-like). To study this I used a technique called fluorescence correlation spectroscopy (FCS) to measure how single molecules moved when placed on the surface of the glass film, and then heated the system up. This meant understanding both the thermodynamics of single molecules as well as the film itself, on top of the physics involved between molecules and surfaces. 
 
 
-The structure of the course has been designed so that you have the opportunity to develop skills in the workshop before applying them in other areas of the programme (e.g. developing analysis or writing skills that may then be applied when completing lab assignments). During some weeks free blocks are timetabled, these have purposefully been included so that you may decide which skills or topics you wish to receive additional support with. For example, free sessions may be used to recap previously covered materials or to complete analysis and writing assignments related to the labs. 
+Office: D29, Hicks Building   
+Email: <m.mears@sheffield.ac.uk>
 
-The schedule for the computing workshops is as follows:
+---
 
-|Week | Topic|
-|---|---|
-|1| Performing Calculations with Computers I & Measurement, Errors and Uncertainty.|
-|2| Data Types and Management & Functions and Modules |
-|3| Conditional Statements and Loops & Visualising Data and Manual Regression.|
-|4| Linear Regression using Scipy|
-|5| Solving Coding Problems & Arteficial Intelligence|
-|6| Computing Skills Assessment I|
-|7| Reading Week|
-|8-11| Writing Block
-|12| Non-Linear and Weighted Regression Analysis
-|**Semester 2**|-|
-|1-4| Take your Barometer for a Walk Project & MySkills|
-|5| Pandas DataFrames|
-|6| Python Skills Assessment II|
-|7| Introduction to LabView & Interfacing with LabView and a MyDAQ|
-|8| AC Circuits |
-|9-11| Employability|
+### Structure of this course
+By "course" I am referring specifically to the Thermal Physics and Solids section, which will be delivered via three hours of lecture per week alongside problems classes and homework questions. 
 
-I hope you enjoy the workshops!
+I have produced these notes to be used in parallel with the lecture slides and what is written on the boards during the lectures. The course notes are pretty complete in terms of the curriculum content but you'll benefit from attending lectures and problems classes in order to ask any questions or get more clarification on particular points.
+
+It's also important to read around the subject, particularly those topics that may not be clear immediately from the notes or lectures. Different books explain concepts in different ways so another author may spark that lightbulb moment. Textbooks are also a great resource for getting more practice questions to consolidate your understanding.
+
+The list of topics are below. Each topic is aligned to one week of the semester though depending on the pace of lectures balanced with spending more time to go through worked examples there may be a little flexibility with the timings.
+
+```{tableofcontents}
+```
+
+---
+
