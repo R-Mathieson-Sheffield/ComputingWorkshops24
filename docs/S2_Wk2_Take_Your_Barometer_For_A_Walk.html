@@ -196,7 +196,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Useful_Functions.html">Useful Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Appendix_ErrorProp.html">Propagation of Uncertainties</a></li>
 </ul>
 
     </div>
@@ -542,23 +541,23 @@ The correlation coefficient and R2 value for this fit are: 0.9977 and 0.9954 res
 <ol class="arabic simple" start="5">
 <li><p>We may then use the gradient and its associated uncertainty to determine the spring constant and its associated uncertainty. The error propagation uses the following rule:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-42e02364-49d7-4074-836c-a1f7a10c4140">
-<span class="eqno">(44)<a class="headerlink" href="#equation-42e02364-49d7-4074-836c-a1f7a10c4140" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-62b652b5-9e09-4d99-808a-62162c20843e">
+<span class="eqno">(44)<a class="headerlink" href="#equation-62b652b5-9e09-4d99-808a-62162c20843e" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 Z = A^n,
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a217ca7f-e148-4397-ac5c-ab94e9eb3c08">
-<span class="eqno">(45)<a class="headerlink" href="#equation-a217ca7f-e148-4397-ac5c-ab94e9eb3c08" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e2c59408-5ac9-4e56-befc-aa1120a722a6">
+<span class="eqno">(45)<a class="headerlink" href="#equation-e2c59408-5ac9-4e56-befc-aa1120a722a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta Z = n \frac{\Delta A}{A} \Delta Z. 
 \end{equation}\]</div>
 <p>Therefore the error on the spring constant, <span class="math notranslate nohighlight">\(k\)</span>, is determined from the gradient of the line of best fit, <span class="math notranslate nohighlight">\(m\)</span>, as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0028d77-f7bb-4b55-892e-5bf4b530f637">
-<span class="eqno">(46)<a class="headerlink" href="#equation-e0028d77-f7bb-4b55-892e-5bf4b530f637" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b9c1768f-272a-4cb7-8956-708bcf3c9cd5">
+<span class="eqno">(46)<a class="headerlink" href="#equation-b9c1768f-272a-4cb7-8956-708bcf3c9cd5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k = \frac{1}{m} = m^{-1},
 \end{equation}\]</div>
 <p>meaning that <span class="math notranslate nohighlight">\(Z = k\)</span>, <span class="math notranslate nohighlight">\(A=m\)</span> and <span class="math notranslate nohighlight">\(n=-1\)</span>. If we substitute these terms into our error equation above we get:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-967cd726-9d26-4ba0-af88-7c2cb9218e3c">
-<span class="eqno">(47)<a class="headerlink" href="#equation-967cd726-9d26-4ba0-af88-7c2cb9218e3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-18945f42-fb8f-45f4-85c6-d90a7f2ba790">
+<span class="eqno">(47)<a class="headerlink" href="#equation-18945f42-fb8f-45f4-85c6-d90a7f2ba790" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta k = -1 \times \frac{\Delta m}{m} \times k.
 \end{equation}\]</div>
 <p>We take the magnitude of <span class="math notranslate nohighlight">\(\Delta k\)</span> to be equal to the error as it can either be positive or negative (i.e plus or minus).</p>
